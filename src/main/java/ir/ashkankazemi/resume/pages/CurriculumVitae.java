@@ -16,6 +16,8 @@
 package ir.ashkankazemi.resume.pages;
 
 import de.agilecoders.wicket.core.Bootstrap;
+import ir.ashkankazemi.resume.configmanager.ConfigManager;
+import ir.ashkankazemi.resume.utils.ExternalContentExhibitor;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
@@ -30,7 +32,9 @@ public class CurriculumVitae extends WebPage {
     public CurriculumVitae(PageParameters params) {
         super(params);
         this.add(HomePage.getMainNavBar("navigation"));
-        
+        this.add(new Label("pageTitle", ConfigManager.getInstance().getHomePageTitle()));
+        ExternalContentExhibitor externalContentExhibitor = new ExternalContentExhibitor("cv", ConfigManager.getInstance().getCVFilePath(), ConfigManager.getInstance().getHomePageTitle());
+        this.add(externalContentExhibitor);
     }
 
     @Override

@@ -16,13 +16,11 @@
 package ir.ashkankazemi.resume.pages;
 
 import de.agilecoders.wicket.core.Bootstrap;
+import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.Jumbotron;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.LabelBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.block.LabelType;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapLink;
-import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.image.Icon;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
 import ir.ashkankazemi.resume.configmanager.ConfigManager;
 import org.apache.wicket.Component;
@@ -30,8 +28,8 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.ExternalLink;
 import org.apache.wicket.markup.html.panel.EmptyPanel;
-import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 /**
@@ -60,7 +58,7 @@ public class Contact extends WebPage {
         Component phoneNumber;
         if (ConfigManager.getInstance().getPhoneNoVisibility()) {
             phoneNumber = new Label("phoneNo", ConfigManager.getInstance().getPhoneNo());
-            phoneNumber.add(new LabelBehavior(LabelType.Info));
+            phoneNumber.add(new LabelBehavior(LabelType.Success));
         } else {
             phoneNumber = new EmptyPanel("phoneNo");
         }
@@ -68,27 +66,20 @@ public class Contact extends WebPage {
     }
 
     protected Component getEMailAddress() {
-        Label mail = new Label("mail", ConfigManager.getInstance().getEMailAddress());
-        mail.add(new LabelBehavior(LabelType.Info));
-        return mail;
+        ExternalLink email = new ExternalLink("mail", ConfigManager.getInstance().getEMailAddress(), ConfigManager.getInstance().getEMailAddress());
+        email.add(new BootstrapBaseBehavior());
+        return email;
     }
 
     protected Component getLinkedIn() {
-        BootstrapLink<String> linkedIn = new BootstrapLink("linkedIn", Model.of("LinkedIn"), Buttons.Type.Info) {
-            
-            @Override
-            public void onClick() {
-                
-            }
-        };
-//        Label linkedI2n = new Label("linkedIn", ConfigManager.getInstance().getLinkedIn());
-//        linkedIn.add(new LabelBehavior(LabelType.Info));
+        ExternalLink linkedIn = new ExternalLink("linkedIn", ConfigManager.getInstance().getLinkedIn(), "linkedIn");
+        linkedIn.add(new BootstrapBaseBehavior());
         return linkedIn;
     }
 
     protected Component getTwitter() {
-        Label twitter = new Label("twitter", ConfigManager.getInstance().getTwitter());
-        twitter.add(new LabelBehavior(LabelType.Info));
+        ExternalLink twitter = new ExternalLink("twitter", ConfigManager.getInstance().getTwitter(), "twitter");
+        twitter.add(new BootstrapBaseBehavior());
         return twitter;
     }
 

@@ -21,21 +21,10 @@ limitations under the License.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div class="container">
-        <div wicket:id="navigation"></div>
-
-        <div wicket:id="container">
-            <h2 wicket:id="ci-header"></h2>
-            <span wicket:id="ci">
-                <i wicket:id="phoneIcon"></i><span wicket:id="phoneNo"></span>
-                <br>
-                <i wicket:id="mailIcon"></i><a wicket:id="mail"></a>
-                <br>
-                <i wicket:id="linkedInIcon"></i><a wicket:id="linkedIn"></a>
-                <br>
-                <i wicket:id="twitterIcon"></i><a wicket:id="twitter"></a>
-            </span>
+    <wicket:panel>
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="" wicket:id="content"></iframe>
         </div>
-        </div>
-    </body>
+    </wicket:panel>
+</body>
 </html>

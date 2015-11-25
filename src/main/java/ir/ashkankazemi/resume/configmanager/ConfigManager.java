@@ -87,4 +87,8 @@ public class ConfigManager {
     public String getHomePhotoPath(){
         return this.mainConfig.getProperty("home_photo_path", "photo.jpg");
     }
+    
+    public String getCVFilePath(){
+        return this.mainConfig.getProperty("cv_file_path");
+    }
 }

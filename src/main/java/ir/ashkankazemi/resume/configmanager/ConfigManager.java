@@ -15,8 +15,11 @@
  */
 package ir.ashkankazemi.resume.configmanager;
 
-import java.io.IOException;
-import java.util.Properties;
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,13 +28,15 @@ import java.util.logging.Logger;
  * @author ashkan
  */
 public class ConfigManager {
-    private Properties mainConfig;
+    private HashMap<String, Object> mainConfig;
     private static ConfigManager instance;
     private ConfigManager(){
-        this.mainConfig = new Properties();
         try {
-            this.mainConfig.load(ConfigManager.class.getResourceAsStream("/main-config.properties"));
-        } catch (IOException ex) {
+            this.mainConfig = new Gson().
+                    fromJson(
+                            new InputStreamReader(ConfigManager.class.getResourceAsStream("/main-config.json")), 
+                            new TypeToken<HashMap<String, Object>>(){}.getType());
+        } catch (Exception ex) {
             Logger.getLogger(ConfigManager.class.getName()).log(Level.SEVERE, null, ex);
             throw new RuntimeException(ex);
         }
@@ -45,50 +50,50 @@ public class ConfigManager {
     }
     
     public String getHomePageTitle(){
-        return this.mainConfig.getProperty("home_page_title", "Welcome!");
+        return (String) this.mainConfig.get("home_page_title");
     }
     
     public String getBrandName(){
-        return this.mainConfig.getProperty("brand_name", "Welcome!");
+        return (String) this.mainConfig.get("brand_name");
     }
     
     public String getHomeIntroTitle(){
-        return this.mainConfig.getProperty("home_intro_title", "About Me");
+        return (String) this.mainConfig.get("home_intro_title");
     }
     
-    public String getHomeIntro(){
-        return this.mainConfig.getProperty("home_intro", "Please set the \"home_intro\" config in the \"main-config.properties\" file");
+    public List<String> getHomeIntro(){
+        return (List<String>) this.mainConfig.get("home_intro");
     }
     
     public Boolean getPhoneNoVisibility(){
-        return this.mainConfig.getProperty("show_phone", "true").toLowerCase().equals("true");
+        return (Boolean) this.mainConfig.get("show_phone");
     }
     
     public String getContactInfoTitle(){
-        return this.mainConfig.getProperty("ci_title", "Contact me at:");
+        return (String) this.mainConfig.get("ci_title");
     }
     
     public String getPhoneNo(){
-        return this.mainConfig.getProperty("ci_phone", "Please configure your phone number!");
+        return (String) this.mainConfig.get("ci_phone");
     }
     
     public String getEMailAddress(){
-        return this.mainConfig.getProperty("ci_mail", "Please configure your E-Mail Address!");
+        return (String) this.mainConfig.get("ci_mail");
     }
     
     public String getLinkedIn(){
-        return this.mainConfig.getProperty("ci_linkedin", "Please configure your LinkedIn Profile!");
+        return (String) this.mainConfig.get("ci_linkedin");
     }
     
     public String getTwitter(){
-        return this.mainConfig.getProperty("ci_twitter", "Please configure your Twitter Profile!");
+        return (String) this.mainConfig.get("ci_twitter");
     }
     
     public String getHomePhotoPath(){
-        return this.mainConfig.getProperty("home_photo_path", "photo.jpg");
+        return (String) this.mainConfig.get("home_photo_path");
     }
     
     public String getCVFilePath(){
-        return this.mainConfig.getProperty("cv_file_path");
+        return (String) this.mainConfig.get("cv_file_path");
     }
 }

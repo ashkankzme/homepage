@@ -8,11 +8,14 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarComponents;
 import ir.ashkankazemi.resume.configmanager.ConfigManager;
+import java.util.Arrays;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.image.Image;
+import org.apache.wicket.markup.html.list.ListItem;
+import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.resource.ContextRelativeResource;
 
@@ -25,7 +28,12 @@ public class HomePage extends WebPage {
         this.add(new Label("pageTitle", ConfigManager.getInstance().getHomePageTitle()));
         this.add(getMainNavBar("navigation"));
         Jumbotron jumbotron = new Jumbotron("container", Model.of("Hello, I'm ashkan Kazemi!"));
-        Label intro = new Label("intro", ConfigManager.getInstance().getHomeIntro());
+        ListView<String> intro = new ListView<String>("intro", ConfigManager.getInstance().getHomeIntro()) {
+            @Override
+            protected void populateItem(ListItem<String> li) {
+                li.add(new Label("intro_line", li.getModelObject()));
+            }
+        };
         jumbotron.add(intro);
         jumbotron.add(new Heading("intro-header", ConfigManager.getInstance().getHomeIntroTitle()));
         jumbotron.add(new Image("photo", new ContextRelativeResource(ConfigManager.getInstance().getHomePhotoPath())).add(new ImageBehavior(ImageBehavior.Type.Rounded)));

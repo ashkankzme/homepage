@@ -1,0 +1,20 @@
+{
+    "home_page_title": "Ashkan Kazemi's Homepage",
+    "brand_name": "Ashkan Kazemi's Homepage",
+    "home_photo_path": "images/me.jpg",
+    "home_intro_title": "About Me",
+    "home_intro": ["Hello! I am Ashkan Kazemi, Student of Software Engineering at University of Tehran, Iran and this is my homepage. I'm also a Software Engineer at TAP30, a newly founded startup, working in the area of intelligent transport systems (basically Iranian Uber :D). We build \"microservices\" with node.js and we design for the high scale and also tackle a lot of challenges regarding that \"ditributed-level complexity\" and \"scale\".", 
+        "Before joining TAP30, I was working as a Software Engineer for 1.5 years at Institute of Applied Intelligent Systems at University of Tehran, where I did a bunch of cool things. I designed and developed most of the Marine section of the Iranian Single Window project, I did a lot of monitoring stuff for Cassandra, developed a static analysis tool detecting improper Hibernate session management and I also did a lot of work on performance testing on web applications.", 
+        "I'm really into software systems and the problems that come with it. I think that there are many things about software and the way it's produced that can be improved. One domain of problems that are really intriguing to me are the ones that relate to designing software for large scale; The architectural approaches for designing such systems and the underlying facilities that enable us to handle such large scale, to be more specific, are my thing!", 
+        "Architectural Approaches for software at Large-scale: I have done a lot of inspection onto this issue, and specifically on the \"microservices\" architecture. I think that this solution might be it for the big enterprises, but I also believe that there needs to be more research done on the matter, since there are still doubts on whether it's just a big hype or it's here to stay! I have also recently started developing microservices at TAP30 and sensed the challenges regarding the development and maintainance of such architecture and strongly feel the need to improve it (or at least try!), and I already have some ideas of my own on this matter!", 
+        "Underlying Facilities for software at Large-scale: When computing at such large scale as Netflix, Amazon, Uber, etc, you need the proper tools to handle this kind of load. Specifically, I think that databases can be a real pain in the neck! So one area of research interest for me would be anything related to large scale computing and databases, like databases handling high load, any problem rising with microservices architecture related to databases, and tools that help us monitor and better use databases at large scale.", 
+        "I'm also really fascinated by Machine Learning and think that this could be a way out for many of our unsolved problems, specially in software engineering! (I currently am trying to educate myself on the matter)", 
+        "Also, to contact me, please email me at ashkankzme@gmail.com, or visit the contact me page for more contact details."],
+    "show_phone": false,
+    "ci_title": "Contact Me Through:",
+    "ci_phone": "+989392076485",
+    "ci_mail": "ashkankzme@gmail.com",
+    "ci_linkedin": "https://ir.linkedin.com/in/ashkan-kazemi-990a0376",
+    "ci_twitter": "https://twitter.com/ashkankazemi",
+    "cv_file_path": "Ashkan Kazemi.pdf"
+}

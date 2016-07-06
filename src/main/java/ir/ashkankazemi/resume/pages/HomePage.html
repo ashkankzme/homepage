@@ -9,12 +9,18 @@
             <div wicket:id="navigation" class="row"></div>
 
             <div wicket:id="container" class ="row">
-                <div class="col-md-4">
-                    <img wicket:id="photo"/>
+                <h2 wicket:id="intro-header"></h2>
+                <br>
+                <div class="col-md-9">
+                    <table>
+                        <tbody wicket:id="intro">
+                            <tr wicket:id="intro_line">
+                            </tr><br>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="col-md-8">
-                    <h2 wicket:id="intro-header"></h2>
-                    <span wicket:id="intro"></span>
+                <div class="col-md-3">
+                    <img wicket:id="photo"/>
                 </div>
             </div>
         </div>
